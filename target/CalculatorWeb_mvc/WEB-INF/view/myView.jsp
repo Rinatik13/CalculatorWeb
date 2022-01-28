@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2 id="h2">
-    Pleas input numbers!
+    Please input numbers!
 </h2>
 
 <form action="result" method="get">

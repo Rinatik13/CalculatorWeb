@@ -5,9 +5,12 @@
 </head>
 <body>
 
-Result!
-
+<h1>Result!</h1>
 <br>
+<br>
+
+${resultMyFunction}
+
 
 </body>
 </html>

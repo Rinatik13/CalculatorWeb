@@ -14,11 +14,13 @@
 <form action="result" method="get">
     <input type="text" name="numberOne"
     placeholder="Input number one">
+
     <br>
     <br>
 
     <input type="text" name="numberTwo"
            placeholder="Input number two">
+
     <br>
     <br>
 
