@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 
 
@@ -7,27 +8,31 @@
     <link rel="stylesheet" href="myCss.css">
 </head>
 <body>
-<h2 id="h2">
+<h2>
     Please input numbers!
 </h2>
 
-<form action="result" method="get">
-    <input type="text" name="numberOne"
+<form action="result" method="post">
+    <input type="number" name="numberOne"
     placeholder="Input number one">
+
     <br>
     <br>
 
-    <input type="text" name="numberTwo"
-           placeholder="Input number two">
+    <input type="number" name="numberTwo"
+           placeholder="Input number two"/>
     <br>
     <br>
-
-    <input type="submit" value="+">
-    <input type="submit" value="-">
-    <input type="submit" value="/">
-    <input type="submit" value="*">
-    
+    + <form:radiobutton path="func" value="plus"/>
+    - <form:radiobutton path="func" value="minus"/>
+    / <form:radiobutton path="func" value="delenie"/>
+    * <form:radiobutton path="func" value="umnojenie"/>
+    <br>
+    <br>
+    <input type="submit" value="="/>
 </form>
+
+
 
 </body>
 
