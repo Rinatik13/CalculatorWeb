@@ -12,7 +12,7 @@
     Please input numbers!
 </h2>
 
-<form action="result" method="post">
+<form action="result" method="get">
     <input type="number" name="numberOne"
     placeholder="Input number one">
 
@@ -23,15 +23,16 @@
            placeholder="Input number two"/>
     <br>
     <br>
-    + <form:radiobutton path="func" value="plus"/>
-    - <form:radiobutton path="func" value="minus"/>
-    / <form:radiobutton path="func" value="delenie"/>
-    * <form:radiobutton path="func" value="umnojenie"/>
+    + <input type="radio" value="1" name="1">
+    - <input type="radio" value="2" name="1">
+    / <input type="radio" value="3" name="1">
+    * <input type="radio" value="4" name="1">
     <br>
     <br>
     <input type="submit" value="="/>
-</form>
 
+
+</form>
 
 
 </body>

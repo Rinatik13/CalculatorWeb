@@ -3,11 +3,9 @@ package com.calculator.web.mvc;
 import com.calculator.web.mvc.function.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class MyController {
@@ -16,72 +14,41 @@ public class MyController {
         return "myView";
     }
 
+// view result получает данные на основании ниже приведённых вычислений
+// пользователь заполняет значения двух переменных и выбирает необходимую функцию
+// после нажатия кнопки submit мы проверяем какую функцию выбрал пользователь
+// на основании выбраной функции производим следующие расчёты
+// !!! не реализована зашита от 0 в делении !!!
 
     @RequestMapping ("/result")
-    public String showPlus(@RequestParam("MyFunct") String funct, Model model) {
+    public String showPlus(HttpServletRequest request, Model model) {
+        long x = Long.parseLong(request.getParameter("numberOne"));
+        long y = Long.parseLong(request.getParameter("numberTwo"));
+        String text = request.getParameter("1").toString();
+        long result = 0;
 
-        long x = Long.parseLong(model.addAttribute("numberOne", funct).toString());
-        long y = Long.parseLong(model.addAttribute("numberTwo",funct).toString());
+        if (text.equals("1")){
+            MyFunction plus = new Plus();
+            result = plus.functionStart(x,y);
 
+        }
+        else if(text.equals("2")){
+            MyFunction minus = new Minus();
+            result = minus.functionStart(x,y);
+        }
+        else if (text.equals("3")){
+            MyFunction delenie = new Delenie();
+            result = delenie.functionStart(x,y);
+        }
+        else if (text.equals("4")){
+            MyFunction multiplication = new Multiplication();
+            result = multiplication.functionStart(x,y);
+        }
 
-
-        MyFunction plus = new Plus();
-        long result = plus.functionStart(x,y);
 
         model.addAttribute("result",result);
-
         return "result";
     }
 
-//    @RequestMapping("/result/minus")
-//    public String showMinus(HttpServletRequest request, Model model) {
-//
-//        String num1 = request.getParameter("numberOne");
-//        String num2 = request.getParameter("numberTwo");
-//
-//        long x = Long.parseLong(num1);
-//        long y = Long.parseLong(num2);
-//
-//        MyFunction plus = new Minus();
-//        long result = plus.functionStart(x,y);
-//
-//        model.addAttribute("result",result);
-//
-//        return "result";
-//    }
-//
-//    @RequestMapping("/result/delenie")
-//    public String showDelenie(HttpServletRequest request, Model model) {
-//
-//        String num1 = request.getParameter("numberOne");
-//        String num2 = request.getParameter("numberTwo");
-//
-//        long x = Long.parseLong(num1);
-//        long y = Long.parseLong(num2);
-//
-//        MyFunction plus = new Delenie();
-//        long result = plus.functionStart(x,y);
-//
-//        model.addAttribute("result",result);
-//
-//        return "result";
-//    }
-//
-//    @RequestMapping("/result/umnojenie")
-//    public String showUmnojenie(HttpServletRequest request, Model model) {
-//
-//        String num1 = request.getParameter("numberOne");
-//        String num2 = request.getParameter("numberTwo");
-//
-//        long x = Long.parseLong(num1);
-//        long y = Long.parseLong(num2);
-//
-//        MyFunction plus = new Multiplication();
-//        long result = plus.functionStart(x,y);
-//
-//        model.addAttribute("result",result);
-//
-//        return "result";
-//    }
 
 }
